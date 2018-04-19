@@ -107,7 +107,10 @@ environments:
     production:
         dataSource:
             dbCreate: update
-            url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            driverClassName: org.postgresql.Driver
+            url: jdbc:postgresql://ec2-23-23-180-121.compute-1.amazonaws.com:5432/dbhmb022m21djs
+            password: 41496347cb39c7c3a2436aa5e5637aec1b76e2151193d6cd465480b363827ef7
+            username: zmkflrlehojrfs
             properties:
                 jmxEnabled: true
                 initialSize: 5
