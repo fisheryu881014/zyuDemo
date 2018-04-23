@@ -95,6 +95,8 @@ dataSource:
     username: sa
     password: ''
 
+host: 'http://loaclhost:8080/zyu/sync'
+
 environments:
     development:
         dataSource:
@@ -129,3 +131,4 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+        host: 'http://loaclhost:8080/zyu/sync'

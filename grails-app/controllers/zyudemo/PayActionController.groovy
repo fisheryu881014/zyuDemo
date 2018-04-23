@@ -17,7 +17,7 @@ class PayActionController {
         render result as JSON
     }
 
-    def pay(String body, String fee, String type, String key, String license, String callbackUrl) {
+    def pay(String body, String fee, String type, String key, String license, String callbackUrl, String tradeNo) {
         type = type ?: "default"
         def typeActionService = null
         switch (type.toUpperCase()) {
@@ -46,15 +46,20 @@ class PayActionController {
             redirect url: "/failed/to/pay?result=payType"
         }
         try {
-            redirect url: payActionService.payAction(body, fee, key, license, callbackUrl, typeActionService)
+            String result = payActionService.payAction(body, fee, key, license, callbackUrl, typeActionService, tradeNo)
+            if (result.contains("http")) {
+                redirect url: result
+            } else {
+                redirect url: "/failed/to/pay?result=payType"
+            }
         } catch (Exception e) {
             redirect url: "/failed/to/pay?result=${e.getMessage()}"
         }
     }
 
-    def sync(String orderNo, String synType, String status, String price, String time, String cpparam, String sign) {
-        if (payActionService.syncSignCheck(orderNo, synType, status, price, time, cpparam, sign)) {
-            payActionService.doSync(orderNo, synType, status, price, time, cpparam)
+    def sync(String orderNo, String syncType, String status, String price, String time, String cpparam, String sign) {
+        if (payActionService.syncSignCheck(orderNo, syncType, status, price, time, cpparam, sign)) {
+            payActionService.doSync(orderNo, syncType, status, price, time, cpparam)
             render "success"
         } else {
             render "failed"
@@ -69,6 +74,11 @@ class PayActionController {
 //        } else {
 //            render [message: "身份验证失败"] as JSON
         }
-        [message: message] as JSON
+        render message
+    }
+
+    def syncTest(String orderNo, String syncType, String status, String price, String time, String tradeNo, String sign) {
+        def result = [result: "success"]
+        render result as JSON
     }
 }

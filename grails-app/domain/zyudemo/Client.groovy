@@ -20,5 +20,7 @@ class Client {
     Date dateCreated
     Date lastUpdated
 
+    String syncUrl
+
     static hasMany = [payRecords: PayRecord]
 }

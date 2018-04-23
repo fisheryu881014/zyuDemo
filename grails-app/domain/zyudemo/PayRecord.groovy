@@ -24,5 +24,8 @@ class PayRecord {
     String backType
     String backStatus
 
+    String clientOrderNo
+    Integer syncStatus;
+
     static belongsTo = [payType: PayType, client: Client]
 }
