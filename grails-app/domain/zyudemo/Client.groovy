@@ -3,6 +3,7 @@ package zyudemo
 class Client {
 
     static constraints = {
+        payRecords display: false
     }
 
 //    Integer id
