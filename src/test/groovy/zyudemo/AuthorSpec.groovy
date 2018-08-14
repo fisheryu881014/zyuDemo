@@ -3,7 +3,7 @@ package zyudemo
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class PayTypeSpec extends Specification implements DomainUnitTest<PayType> {
+class AuthorSpec extends Specification implements DomainUnitTest<Author> {
 
     def setup() {
     }
@@ -13,6 +13,6 @@ class PayTypeSpec extends Specification implements DomainUnitTest<PayType> {
 
     void "test something"() {
         expect:"fix me"
-            true == true
+            true == false
     }
 }

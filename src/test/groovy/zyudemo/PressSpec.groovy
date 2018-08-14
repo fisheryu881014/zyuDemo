@@ -3,7 +3,7 @@ package zyudemo
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class ClientSpec extends Specification implements DomainUnitTest<Client> {
+class PressSpec extends Specification implements DomainUnitTest<Press> {
 
     def setup() {
     }
