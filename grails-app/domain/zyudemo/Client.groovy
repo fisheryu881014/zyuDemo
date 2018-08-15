@@ -6,6 +6,10 @@ class Client {
         openId nullable: true;
         uuid nullable: true;
         mobile nullable: true;
+
+        wants nullable: true;
+        reading nullable: true;
+        read nullable: true;
     }
 
     String name

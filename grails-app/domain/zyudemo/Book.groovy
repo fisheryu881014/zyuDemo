@@ -4,6 +4,12 @@ class Book {
 
     static constraints = {
         date nullable: true
+
+        translater nullable: true
+
+        want nullable: true;
+        reading nullable: true;
+        read nullable: true;
     }
     /*
 
@@ -17,7 +23,9 @@ class Book {
 
     static hasOne = [press: Press]
 
-    static hasMany = [authors: Author, translater: Author]
+    static hasMany = [authors: Author, translater: Author, want: Client, read: Client, reading: Client]
+
+    static belongsTo = [Author, Client]
 
 
 

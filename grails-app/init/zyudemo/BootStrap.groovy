@@ -10,6 +10,8 @@ class BootStrap {
         Book book
         if (!UserType.findAll()) {
             innerType = new UserType(key: "inner", name: "内部类型", summary: "特殊用户类型，不对外开放").save()
+            UserType mobileType = new UserType(key: "mobile", name: "手机号注册用户", summary: "手机号注册用户").save()
+            UserType weChatType = new UserType(key: "wechat", name: "微信注册用户", summary: "微信注册用户").save()
         }
 
         if (!Author.findAll()) {
@@ -31,10 +33,13 @@ class BootStrap {
 
         if(!Client.findAll()) {
             Client client = new Client(name:"Inner client", type: innerType).save()
-            client.addToWants(book).save()
-            client.addToRead(book).save()
-//            client.addToReading(book).save();
+            client.addToWants(book)
+            client.addToRead(book)
+            client.addToReading(book)
+            client.save()
         }
+
+        Client clientSaved = Client.findById(1)
     }
     def destroy = {
     }
