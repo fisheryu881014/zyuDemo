@@ -11,6 +11,7 @@ class ClientController {
         render "success"
     }
 
+    // todo 登录相关,微信登录完善
     def loginWithWeChat(String openId) {
         Client client = Client.findByOpenId(openId)
         if (client == null) {
@@ -19,7 +20,7 @@ class ClientController {
         }
         render client as JSON
     }
-
+    // todo 登录，手机登录完善
     def loginWithMobile(String mobile) {
         Client client = Client.findByMobile(mobile)
         if (client == null) {
@@ -27,4 +28,6 @@ class ClientController {
         }
         render client as JSON
     }
+
+    // todo, 用户分享
 }
