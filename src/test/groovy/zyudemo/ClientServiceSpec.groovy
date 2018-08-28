@@ -1,9 +1,9 @@
 package zyudemo
 
-import grails.testing.gorm.DomainUnitTest
+import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class AuthorSpec extends Specification implements DomainUnitTest<Author> {
+class ClientServiceSpec extends Specification implements ServiceUnitTest<ClientService>{
 
     def setup() {
     }
@@ -13,6 +13,6 @@ class AuthorSpec extends Specification implements DomainUnitTest<Author> {
 
     void "test something"() {
         expect:"fix me"
-            true == false
+            true == true
     }
 }

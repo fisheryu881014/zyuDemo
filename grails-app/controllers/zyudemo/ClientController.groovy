@@ -1,8 +1,12 @@
 package zyudemo
 
 import grails.converters.JSON
+import org.springframework.beans.factory.annotation.Autowired
 
 class ClientController {
+
+    @Autowired
+    private ClientService clientService
 
     private UserType weChatType = UserType.findByKey("wechat")
     private UserType mobileType = UserType.findByKey("mobile")
@@ -19,6 +23,10 @@ class ClientController {
             client.save()
         }
         render client as JSON
+    }
+
+    def weChatLogin(String code) {
+        render clientService.getUserInfoFromWeChat(code)
     }
     // todo 登录，手机登录完善
     def loginWithMobile(String mobile) {
