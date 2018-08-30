@@ -26,7 +26,7 @@ class ClientController {
     }
 
     def weChatLogin(String code) {
-        render clientService.getUserInfoFromWeChat(code)
+        render clientService.loginWithWeChat(code) as JSON
     }
     // todo 登录，手机登录完善
     def loginWithMobile(String mobile) {

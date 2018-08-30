@@ -3,6 +3,7 @@ package zyudemo
 class Client {
 
     static constraints = {
+        name nullable: true;
         openId nullable: true;
         uuid nullable: true;
         mobile nullable: true;
