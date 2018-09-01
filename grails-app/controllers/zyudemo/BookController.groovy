@@ -1,56 +1,29 @@
 package zyudemo
 
+import grails.converters.JSON
+
 class BookController {
+
+    def bookService;
 
     def index() { render "index" }
 
-    def bookWant(Integer bookId, Integer clientId) {
-        Book book = Book.findById(bookId)
-        Client client = Client.findById(clientId);
-
-        if (book != null && client != null) {
-            client.addToWants(book)
-            client.save();
-            render "add success"
-            return
-        }
-        render "failed to add"
+    def sync() {
+        render bookService.syncBooks(request.JSON) as JSON
     }
 
-    def bookReed(Integer bookId, Integer clientId) {
-        Book book = Book.findById(bookId)
-        Client client = Client.findById(clientId);
-
-        if (book != null && client != null) {
-            client.addToRead(book)
-            client.save();
-            render "add success"
-            return
-        }
-        render "failed to add"
+    def addToWant(Integer bookId, Integer clientId) {
+        render bookService.addBookToClient(bookId, clientId, "wants") as JSON
     }
 
-    def bookReading(Integer bookId, Integer clientId) {
-        Book book = Book.findById(bookId)
-        Client client = Client.findById(clientId);
-
-        if (book != null && client != null) {
-            client.addToReading(book)
-            client.save();
-            render "add success"
-            return
-        }
-        render "failed to add"
+    def addToRead(Integer bookId, Integer clientId) {
+        render bookService.addBookToClient(bookId, clientId, "read") as JSON
     }
 
-    def bookSync() {
-        for (Book book :request.JSON) {
-            if (Book.findByName(book.getName())!= null) {
-                continue
-            }
-            book.save();
-        }
+    def addToReading(Integer bookId, Integer clientId) {
+        render bookService.addBookToClient(bookId, clientId, "reading") as JSON
     }
 
 
 }
+
